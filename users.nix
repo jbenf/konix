@@ -28,7 +28,7 @@
     packages = with pkgs; [
       git
     ];
-  }
+  };
 
   environment.localBinInPath = true;
 
