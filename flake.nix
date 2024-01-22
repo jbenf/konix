@@ -12,7 +12,6 @@
         system = "x86_64-linux";
         
         modules = [
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
             ./default.nix
             ./konix0.nix
         ];
