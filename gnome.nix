@@ -48,7 +48,7 @@
     gnome-contacts
 ]);
 
-systemd.user.services.gnome-init = {
+systemd.user.services.konix.gnome-init = {
     enable = true;
     description = "Gnome Init";
 

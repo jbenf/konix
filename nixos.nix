@@ -30,7 +30,7 @@
       "-L" # print build logs
       "--impure"
     ];
-    dates = "11:00";
+    dates = "11:05";
     #randomizedDelaySec = "45min";
   };
 
@@ -45,11 +45,25 @@
       '';
     };
 
-    systemd.timers.flake-update = {
-      wantedBy = [ "timers.target" ];
-      partOf = [ "flake-update.service" ];
-      timerConfig.OnCalendar = [ "*-*-* *:00:00" ];
-    };
+  systemd.timers.konix-flake-update = {
+    wantedBy = [ "timers.target" ];
+    partOf = [ "flake-update.service" ];
+    timerConfig.OnCalendar = [ "*-*-* *:00:00" ];
+  };
+
+  systemd.user.services.konix-reboot-check = {
+    serviceConfig.Type = "oneshot";
+    path = with pkgs; [ libnotify ];
+    script = ''
+      diff <(readlink /run/booted-system/{initrd,kernel,kernel-modules}) <(readlink /nix/var/nix/profiles/system/{initrd,kernel,kernel-modules}) || notify-send -i system -u critical "Update" "Bitte starten Sie den Rechner neu um das Update zu vervollständigen."
+    '';
+  };
+
+  systemd.user.timers.konix-reboot-check = {
+    wantedBy = [ "timers.target" ];
+    partOf = [ "konix-reboot-check.service" ];
+    timerConfig.OnCalendar = [ "*-*-* *:15:00" ];
+  };
 
 }
 
