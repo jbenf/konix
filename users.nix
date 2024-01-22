@@ -21,11 +21,11 @@
     ];
   };
 
-  users.users.admin = {
-    isNormalUser = true;
-    description = "Admin";
-    extraGroups = [ "networkmanager" "wheel" "dialout"  ];
-  };
+  # users.users.admin = {
+  #   isNormalUser = true;
+  #   description = "Admin";
+  #   extraGroups = [ "networkmanager" "wheel" "dialout"  ];
+  # };
 
   environment.localBinInPath = true;
 

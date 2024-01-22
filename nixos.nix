@@ -30,7 +30,7 @@
       "-L" # print build logs
       "--impure"
     ];
-    dates = "23:20";
+    dates = "11:00";
     #randomizedDelaySec = "45min";
   };
 
@@ -39,6 +39,8 @@
       path = with pkgs; [ git ];
       script = ''
         cd /root/konix
+        git reset --hard
+        git clean -dxf
         git pull
       '';
     };
@@ -46,7 +48,7 @@
     systemd.timers.flake-update = {
       wantedBy = [ "timers.target" ];
       partOf = [ "flake-update.service" ];
-      timerConfig.OnCalendar = [ "*-*-* *:15:00" ];
+      timerConfig.OnCalendar = [ "*-*-* *:00:00" ];
     };
 
 }
