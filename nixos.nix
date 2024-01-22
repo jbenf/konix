@@ -30,9 +30,24 @@
       "-L" # print build logs
       "--impure"
     ];
-    dates = "22:45";
+    dates = "23:20";
     #randomizedDelaySec = "45min";
   };
+
+  systemd.services.flake-update = {
+      serviceConfig.Type = "oneshot";
+      path = with pkgs; [ git ];
+      script = ''
+        cd /root/konix
+        git pull
+      '';
+    };
+
+    systemd.timers.flake-update = {
+      wantedBy = [ "timers.target" ];
+      partOf = [ "flake-update.service" ];
+      timerConfig.OnCalendar = [ "*-*-* *:15:00" ];
+    };
 
 }
 
