@@ -25,12 +25,15 @@
     isNormalUser = true;
     description = "Admin";
     extraGroups = [ "networkmanager" "wheel" "dialout"  ];
+    packages = with pkgs; [
+      git
+    ];
   }
 
   environment.localBinInPath = true;
 
   # Disable the root user
-  users.users.root.hashedPassword = "!";
+  #users.users.root.hashedPassword = "!";
 
 }
 

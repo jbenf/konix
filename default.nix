@@ -17,6 +17,7 @@
       ./printing.nix
       ./gnome.nix
       ./tools.nix
+      ./users.nix
     ];
 
   
