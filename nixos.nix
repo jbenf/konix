@@ -24,13 +24,13 @@
 
   system.autoUpgrade = {
     enable = true;
-    flake = inputs.self.outPath;
+    flake = /root/konix;
     flags = [
       "--no-write-lock-file"
       "-L" # print build logs
       "--impure"
     ];
-    dates = "22:40";
+    dates = "22:45";
     #randomizedDelaySec = "45min";
   };
 
