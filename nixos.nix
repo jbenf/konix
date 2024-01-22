@@ -20,5 +20,19 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  nix.optimise.automatic = true;
+
+  system.autoUpgrade = {
+    enable = true;
+    flake = inputs.self.outPath;
+    flags = [
+      "--no-write-lock-file"
+      "-L" # print build logs
+      "--impure"
+    ];
+    dates = "22:40";
+    #randomizedDelaySec = "45min";
+  };
+
 }
 

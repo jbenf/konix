@@ -25,9 +25,6 @@
     isNormalUser = true;
     description = "Admin";
     extraGroups = [ "networkmanager" "wheel" "dialout"  ];
-    packages = with pkgs; [
-      git
-    ];
   };
 
   environment.localBinInPath = true;

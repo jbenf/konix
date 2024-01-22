@@ -11,6 +11,7 @@
     htop
     ncdu
     p7zip
+    git
     #toybox
     # super
   ];
