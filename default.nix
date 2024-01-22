@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      /etc/nixos/configuration-hardware.nix
+      /etc/nixos/hardware-configuration.nix
       ./locale.nix
       ./networking.nix
       ./nixos.nix
