@@ -15,6 +15,7 @@
     packages = with pkgs; [
       chromium
       keepassxc
+      libreoffice
       #inkscape
       #gimp
       #vlc

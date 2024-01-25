@@ -5,14 +5,5 @@
 { config, pkgs, ... }:
 
 {
-
-    
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    cups-dymo
-  ];
-
+  networking.hostName = "kobook1"; # Define your hostname.
 }
-

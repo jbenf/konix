@@ -16,6 +16,14 @@
             ./konix0.nix
         ];
       };
+      kobook1 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        
+        modules = [
+            ./default.nix
+            ./kobook1.nix
+        ];
+      };
     };
   };
 }
