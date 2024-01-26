@@ -33,7 +33,7 @@
   # Disable the root user
   #users.users.root.hashedPassword = "!";
 
-  security.polkit.enable=true;
+  /*security.polkit.enable=true;
 
   security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
@@ -51,18 +51,22 @@
         return polkit.Result.YES;
       }
     })
-  '';
+  '';*/
 
   security.sudo.extraRules = [
     { groups = [ "users" ]; runAs = "root"; 
       commands = [ 
-        { command = "/run/current-system/sw/bin/systemctl start nix-gc.service"; options = [ "NOPASSWD" ]; }
-        { command = "/run/current-system/sw/bin/systemctl start nix-optimise.service"; options = [ "NOPASSWD" ]; }
-        { command = "/run/current-system/sw/bin/systemctl start nixos-upgrade.service"; options = [ "NOPASSWD" ]; }
-        { command = "/run/current-system/sw/bin/systemctl start konix-flake-update.service"; options = [ "NOPASSWD" ]; }
+        { command = "/run/current-system/sw/bin/systemctl start nix-gc"; options = [ "NOPASSWD" ]; }
+        { command = "/run/current-system/sw/bin/systemctl start nix-optimise"; options = [ "NOPASSWD" ]; }
+        { command = "/run/current-system/sw/bin/systemctl start nixos-upgrade"; options = [ "NOPASSWD" ]; }
+        { command = "/run/current-system/sw/bin/systemctl start konix-flake-update"; options = [ "NOPASSWD" ]; }
       ]; 
     }
-  ]; 
+  ];
+
+  environment.shellAliases = {
+    konix-update = "sudo systemctl start nix-gc && sleep 1 && sudo systemctl start nix-optimise && sleep 1 && sudo systemctl start konix-flake-update && sleep 1 && sudo systemctl start nixos-upgrade && sleep 1 && systemctl start konix-reboot-check && echo Update completed"
+  }
 
 }
 
