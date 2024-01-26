@@ -51,7 +51,7 @@
     timerConfig = {
       OnCalendar = [ "*-*-* *:00:00" ];
       persistent = true;
-    }
+    };
   };
 
   systemd.user.services.konix-reboot-check = {
@@ -72,7 +72,7 @@
     timerConfig = {
       OnCalendar = [ "*-*-* *:15:00" ];
       persistent = true;
-    }
+    };
   };
 
 }
