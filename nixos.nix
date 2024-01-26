@@ -20,7 +20,17 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  #nix.optimise.automatic = true;
+  nix.optimise = {
+    persistent = true;
+    dates = "10:55";
+    automatic = true;
+  };
+
+  nix.gc = {
+    persistent = true;
+    dates = "10:45";
+    automatic = true;
+  };
 
   system.autoUpgrade = {
     enable = true;
@@ -55,7 +65,7 @@
     };
   };
 
-  systemd.services.konix-cleanup = {
+  /*systemd.services.konix-cleanup = {
       serviceConfig.Type = "oneshot";
       path = with pkgs; [ nix ];
       script = ''
@@ -71,7 +81,7 @@
       OnCalendar = [ "*-*-* 12:05:00" ];
       persistent = true;
     };
-  };
+  };*/
 
   systemd.user.services.konix-reboot-check = {
     serviceConfig.Type = "oneshot";
