@@ -33,6 +33,8 @@
   # Disable the root user
   #users.users.root.hashedPassword = "!";
 
+  security.polkit.enable=true;
+
   security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
       if (
