@@ -31,6 +31,7 @@
       "--impure"
     ];
     dates = "11:05";
+    persistent = true;
     #randomizedDelaySec = "45min";
   };
 
