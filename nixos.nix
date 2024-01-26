@@ -57,7 +57,7 @@
 
   systemd.services.konix-cleanup = {
       serviceConfig.Type = "oneshot";
-      path = with pkgs; [ git ];
+      path = with pkgs; [ nix ];
       script = ''
         nix-collect-garbage --delete-older-than 7d
         nix-store --optimize
