@@ -32,6 +32,7 @@
     persistent = true;
     dates = "10:45";
     automatic = true;
+    options = "--delete-older-than 7d";
   };
 
   system.autoUpgrade = {
