@@ -47,7 +47,7 @@
 
   systemd.timers.konix-flake-update = {
     wantedBy = [ "timers.target" ];
-    partOf = [ "flake-update.service" ];
+    partOf = [ "konix-flake-update.service" ];
     timerConfig.OnCalendar = [ "*-*-* *:00:00" ];
   };
 
