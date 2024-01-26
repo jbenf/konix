@@ -20,7 +20,7 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  nix.optimise.automatic = true;
+  #nix.optimise.automatic = true;
 
   system.autoUpgrade = {
     enable = true;
@@ -51,6 +51,24 @@
     partOf = [ "konix-flake-update.service" ];
     timerConfig = {
       OnCalendar = [ "*-*-* *:00:00" ];
+      persistent = true;
+    };
+  };
+
+  systemd.services.konix-cleanup = {
+      serviceConfig.Type = "oneshot";
+      path = with pkgs; [ git ];
+      script = ''
+        nix-collect-garbage --delete-older-than 7d
+        nix-store --optimize
+      '';
+    };
+
+  systemd.timers.konix-cleanup = {
+    wantedBy = [ "timers.target" ];
+    partOf = [ "konix-cleanup.service" ];
+    timerConfig = {
+      OnCalendar = [ "*-*-* 12:05:00" ];
       persistent = true;
     };
   };
