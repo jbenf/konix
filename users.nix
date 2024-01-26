@@ -56,10 +56,10 @@
   security.sudo.extraRules = [
     { groups = [ "users" ]; runAs = "root"; 
       commands = [ 
-        { command = "/usr/bin/systemctl start nix-gc.service"; options = [ "NOPASSWD" ]; }
-        { command = "/usr/bin/systemctl start nix-optimise.service"; options = [ "NOPASSWD" ]; }
-        { command = "/usr/bin/systemctl start nixos-upgrade.service"; options = [ "NOPASSWD" ]; }
-        { command = "/usr/bin/systemctl start konix-flake-update.service"; options = [ "NOPASSWD" ]; }
+        { command = "/run/current-system/sw/bin/systemctl start nix-gc.service"; options = [ "NOPASSWD" ]; }
+        { command = "/run/current-system/sw/bin/systemctl start nix-optimise.service"; options = [ "NOPASSWD" ]; }
+        { command = "/run/current-system/sw/bin/systemctl start nixos-upgrade.service"; options = [ "NOPASSWD" ]; }
+        { command = "/run/current-system/sw/bin/systemctl start konix-flake-update.service"; options = [ "NOPASSWD" ]; }
       ]; 
     }
   ]; 
