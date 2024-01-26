@@ -48,8 +48,10 @@
   systemd.timers.konix-flake-update = {
     wantedBy = [ "timers.target" ];
     partOf = [ "konix-flake-update.service" ];
-    timerConfig.OnCalendar = [ "*-*-* *:00:00" ];
-    persistent = true;
+    timerConfig = {
+      OnCalendar = [ "*-*-* *:00:00" ];
+      persistent = true;
+    }
   };
 
   systemd.user.services.konix-reboot-check = {
@@ -67,8 +69,10 @@
   systemd.user.timers.konix-reboot-check = {
     wantedBy = [ "timers.target" ];
     partOf = [ "konix-reboot-check.service" ];
-    timerConfig.OnCalendar = [ "*-*-* *:15:00" ];
-    persistent = true;
+    timerConfig = {
+      OnCalendar = [ "*-*-* *:15:00" ];
+      persistent = true;
+    }
   };
 
 }
