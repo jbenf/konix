@@ -22,6 +22,7 @@
         modules = [
             ./default.nix
             ./kobook1.nix
+            ./notebook.nix
         ];
       };
     };
