@@ -55,7 +55,11 @@
     serviceConfig.Type = "oneshot";
     path = with pkgs; [ libnotify ];
     script = ''
-      diff <(readlink /run/booted-system/{initrd,kernel,kernel-modules}) <(readlink /nix/var/nix/profiles/system/{initrd,kernel,kernel-modules}) || notify-send -i system -u critical "Update" "Bitte starten Sie den Rechner neu um das Update zu vervollständigen."
+      changes=$(diff <(readlink /run/booted-system/{initrd,kernel,kernel-modules}) <(readlink /nix/var/nix/profiles/system/{initrd,kernel,kernel-modules}) | wc -l)
+      if [ $changes -gt 0 ]; then
+        notify-send -i system -u critical "Update" "Bitte starten Sie den Rechner neu um das Update zu vervollständigen."
+      fi
+      
     '';
   };
 
