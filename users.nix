@@ -54,10 +54,10 @@
   '';
 
   security.sudo.extraRules = [
-    { groups = [ "users" ]; commands = [ "/usr/bin/systemctl start nix-gc.service" ]; }
-    { groups = [ "users" ]; commands = [ "/usr/bin/systemctl start nix-optimise.service" ]; }
-    { groups = [ "users" ]; commands = [ "/usr/bin/systemctl start nixos-upgrade.service" ]; }
-    { groups = [ "users" ]; commands = [ "/usr/bin/systemctl start konix-flake-update.service" ]; }
+    { groups = [ "users" ]; runAs = "root"; commands = [ "/usr/bin/systemctl start nix-gc.service" ]; }
+    { groups = [ "users" ]; runAs = "root"; commands = [ "/usr/bin/systemctl start nix-optimise.service" ]; }
+    { groups = [ "users" ]; runAs = "root"; commands = [ "/usr/bin/systemctl start nixos-upgrade.service" ]; }
+    { groups = [ "users" ]; runAs = "root"; commands = [ "/usr/bin/systemctl start konix-flake-update.service" ]; }
   ]; 
 
 }
