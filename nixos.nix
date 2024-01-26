@@ -21,7 +21,6 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nix.optimise = {
-    persistent = true;
     dates = "10:55";
     automatic = true;
   };
