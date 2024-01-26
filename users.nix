@@ -22,36 +22,11 @@
     ];
   };
 
-  # users.users.admin = {
-  #   isNormalUser = true;
-  #   description = "Admin";
-  #   extraGroups = [ "networkmanager" "wheel" "dialout"  ];
-  # };
-
   environment.localBinInPath = true;
 
   # Disable the root user
   #users.users.root.hashedPassword = "!";
 
-  /*security.polkit.enable=true;
-
-  security.polkit.extraConfig = ''
-    polkit.addRule(function(action, subject) {
-      if (
-        subject.isInGroup("users")
-          && action.id == "org.freedesktop.systemd1.manage-units" 
-          && (
-            action.lookup("unit") == "nix-gc.service" ||
-            action.lookup("unit") == "nix-optimise.service" ||
-            action.lookup("unit") == "nixos-upgrade.service" ||
-            action.lookup("unit") == "konix-flake-update.service" ||
-          )
-        )
-      {
-        return polkit.Result.YES;
-      }
-    })
-  '';*/
 
   security.sudo.extraRules = [
     { groups = [ "users" ]; runAs = "root"; 

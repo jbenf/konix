@@ -68,23 +68,6 @@
     };
   };
 
-  /*systemd.services.konix-cleanup = {
-      serviceConfig.Type = "oneshot";
-      path = with pkgs; [ nix ];
-      script = ''
-        nix-collect-garbage --delete-older-than 7d
-        nix-store --optimize
-      '';
-    };
-
-  systemd.timers.konix-cleanup = {
-    wantedBy = [ "timers.target" ];
-    partOf = [ "konix-cleanup.service" ];
-    timerConfig = {
-      OnCalendar = [ "*-*-* 12:05:00" ];
-      persistent = true;
-    };
-  };*/
 
   systemd.user.services.konix-reboot-check = {
     serviceConfig.Type = "oneshot";
