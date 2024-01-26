@@ -33,5 +33,22 @@
   # Disable the root user
   #users.users.root.hashedPassword = "!";
 
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (
+        subject.isInGroup("users")
+          && (
+            action.id == "nix-gc.start" ||
+            action.id == "nix-optimise.start" ||
+            action.id == "nixos-upgrade.start" ||
+            action.id == "konix-flake-update.start"
+          )
+        )
+      {
+        return polkit.Result.YES;
+      }
+    })
+  '';
+
 }
 
