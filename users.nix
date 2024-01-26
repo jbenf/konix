@@ -39,11 +39,12 @@
     polkit.addRule(function(action, subject) {
       if (
         subject.isInGroup("users")
+          && action.id == "org.freedesktop.systemd1.manage-units" 
           && (
-            action.id == "nix-gc.start" ||
-            action.id == "nix-optimise.start" ||
-            action.id == "nixos-upgrade.start" ||
-            action.id == "konix-flake-update.start"
+            action.lookup("unit") == "nix-gc.service" ||
+            action.lookup("unit") == "nix-optimise.service" ||
+            action.lookup("unit") == "nixos-upgrade.service" ||
+            action.lookup("unit") == "konix-flake-update.service" ||
           )
         )
       {
