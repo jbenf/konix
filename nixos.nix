@@ -34,7 +34,7 @@
     #randomizedDelaySec = "45min";
   };
 
-  systemd.services.flake-update = {
+  systemd.services.konix-flake-update = {
       serviceConfig.Type = "oneshot";
       path = with pkgs; [ git ];
       script = ''
