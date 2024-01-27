@@ -16,6 +16,7 @@
       chromium
       keepassxc
       libreoffice
+      evince
       #inkscape
       #gimp
       #vlc
