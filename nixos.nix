@@ -42,6 +42,7 @@
       "--no-write-lock-file"
       "-L" # print build logs
       "--impure"
+      "--option" "download-attempts" "10"
     ];
     dates = "11:05";
     persistent = true;
