@@ -10,9 +10,8 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    cups-dymo
-  ];
+  services.printing.drivers = [ pkgs.gutenprint pkgs.hplip pkgs.cups-dymo ];
+
 
 }
 
