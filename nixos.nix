@@ -72,14 +72,15 @@
 
   systemd.user.services.konix-reboot-check = {
     serviceConfig.Type = "oneshot";
-    path = with pkgs; [ libnotify ];
+    path = with pkgs; [ libnotify coreutils];
     script = ''
       set -eu
-      changes=$(${pkgs.coreutils}/diff <(${pkgs.coreutils}/readlink /run/booted-system/{initrd,kernel,kernel-modules}) <(${pkgs.coreutils}/readlink /nix/var/nix/profiles/system/{initrd,kernel,kernel-modules}) | wc -l)
-      if [ $changes -gt 0 ]; then
-        notify-send -i system -u critical "Update" "Bitte starten Sie den Rechner neu um das Update zu vervollständigen."
-      else
+      booted=$(readlink /run/booted-system/{initrd,kernel,kernel-modules} | xargs)
+      current=$(/nix/var/nix/profiles/system/{initrd,kernel,kernel-modules} | xargs)
+      if [  "$booted" = "$current" ]; then
         echo "No reboot needed"
+      else
+        notify-send -i system -u critical "Update" "Bitte starten Sie den Rechner neu um das Update zu vervollständigen."
       fi
       
     '';
