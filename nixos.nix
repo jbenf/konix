@@ -76,10 +76,11 @@
     script = ''
       set -eu
       booted=$(readlink /run/booted-system/{initrd,kernel,kernel-modules} | xargs)
-      current=$(/nix/var/nix/profiles/system/{initrd,kernel,kernel-modules} | xargs)
+      current=$(readlink /nix/var/nix/profiles/system/{initrd,kernel,kernel-modules} | xargs)
       if [  "$booted" = "$current" ]; then
         echo "No reboot needed"
       else
+        echo "Reboot needed"
         notify-send -i system -u critical "Update" "Bitte starten Sie den Rechner neu um das Update zu vervollständigen."
       fi
       
