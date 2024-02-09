@@ -17,6 +17,7 @@
       keepassxc
       libreoffice
       evince
+      soco-cli
       #inkscape
       #gimp
       #vlc
