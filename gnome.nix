@@ -23,6 +23,7 @@
     gnomeExtensions.dash-to-dock
     gnome.gnome-tweaks
     papirus-icon-theme
+    soco-cli
   ];
 
   services.xserver.excludePackages = [ pkgs.xterm ];
@@ -47,10 +48,6 @@
     gnome-calendar
     gnome-contacts
 ]);
-
-environment.systemPackages = with pkgs; [
-    soco-cli
-  ];
 
 systemd.user.services.konix-gnome-init = {
     enable = true;
