@@ -65,7 +65,8 @@ systemd.user.services.konix-gnome-init = {
       gsettings set org.gnome.shell disable-user-extensions false
       gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
       gnome-extensions enable dash-to-dock@micxgx.gmail.com
-      gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'chromium-browser.desktop', 'org.keepassxc.KeePassXC.desktop', 'startcenter.desktop']"
+      echo "[Desktop Entry]\nName=Sonos Play\nExec=sonos _all_ play_uri https://stream.sound-team.de/smartradio.mp3\nTerminal=false\nType=Application\nIcon=media-playback-start" > /home/kollektiv/.local/share/application/sonos_play.desktop
+      gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'chromium-browser.desktop', 'org.keepassxc.KeePassXC.desktop', 'startcenter.desktop', 'sonos_play.desktop']"
     '';
   };
 
