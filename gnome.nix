@@ -65,6 +65,7 @@ systemd.user.services.konix-gnome-init = {
       gsettings set org.gnome.shell disable-user-extensions false
       gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
       gnome-extensions enable dash-to-dock@micxgx.gmail.com
+      gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'chromium-browser.desktop', 'org.keepassxc.KeePassXC.desktop', 'startcenter.desktop']"
     '';
   };
 

@@ -3,11 +3,9 @@
   
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ...}: {
+  outputs = inputs@{ self, nixpkgs, ...}: {
     
     nixosConfigurations = {
       konix0 = nixpkgs.lib.nixosSystem {
@@ -35,15 +33,6 @@
             ./kobook2.nix
             ./notebook.nix
         ];
-      };
-    };
-
-    homeConfigurations = {
-      "kollektiv" = inputs.home-manager.lib.homeManagerConfiguration {
-        system = "x86_64-linux";
-        homeDirectory = "/home/kollektiv";
-        username = "kollektiv";
-        configuration.imports = [ ./home.nix ];
       };
     };
   };
