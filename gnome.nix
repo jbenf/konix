@@ -48,6 +48,10 @@
     gnome-contacts
 ]);
 
+environment.systemPackages = with pkgs; [
+    soco-cli
+  ];
+
 systemd.user.services.konix-gnome-init = {
     enable = true;
     description = "Gnome Init";
