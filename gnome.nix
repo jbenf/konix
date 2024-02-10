@@ -75,8 +75,8 @@ systemd.user.services.konix-gnome-init = {
   };
 
   environment.shellAliases = {
-    sonos_crooze = "sonos _all_ play_uri https://streaming.shoutcast.com/crooze-mp3";
-    sonos_smartradio = "sonos _all_ play_uri https://stream.sound-team.de/smartradio.mp3";
+    sonos-crooze = "sonos _all_ play_uri https://streaming.shoutcast.com/crooze-mp3";
+    sonos-smartradio = "sonos _all_ play_uri https://stream.sound-team.de/smartradio.mp3";
   };
 
 }
