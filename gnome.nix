@@ -70,7 +70,7 @@ systemd.user.services.konix-gnome-init = {
       echo -e "[Desktop Entry]\nName=Sonos Pause\nExec=sonos _all_ pause\nTerminal=false\nType=Application\nIcon=media-playback-pause" > $HOME/.local/share/applications/sonos_pause.desktop
       echo -e "[Desktop Entry]\nName=Sonos Volume Up\nExec=sonos _all_ relative_volume 5\nTerminal=false\nType=Application\nIcon=audio-volume-high" > $HOME/.local/share/applications/sonos_vol_up.desktop
       echo -e "[Desktop Entry]\nName=Sonos Volume Down\nExec=sonos _all_ relative_volume -5\nTerminal=false\nType=Application\nIcon=audio-volume-low" > $HOME/.local/share/applications/sonos_vol_down.desktop
-      gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'chromium-browser.desktop', 'org.keepassxc.KeePassXC.desktop', 'startcenter.desktop', 'sonos_play.desktop', 'sonos_pause.desktop', 'sonos_vol_down.desktop', 'sonos_vol_up.desktop']"
+      gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'chromium-browser.desktop', 'org.keepassxc.KeePassXC.desktop', 'startcenter.desktop', 'io.github.janbar.noson.desktop', 'sonos_play.desktop', 'sonos_pause.desktop', 'sonos_vol_down.desktop', 'sonos_vol_up.desktop']"
     '';
   };
 
