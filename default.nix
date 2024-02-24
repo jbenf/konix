@@ -18,6 +18,7 @@
       ./gnome.nix
       ./tools.nix
       ./users.nix
+      ./flatpak.nix
     ];
 
   
