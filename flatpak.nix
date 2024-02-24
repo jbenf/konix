@@ -22,7 +22,6 @@
 
         path = with pkgs; [ flatpak ];
         script = ''
-            echo -e "[Desktop Entry]\nName=Sonos Controller\nExec=flatpak run io.github.janbar.noson\nTerminal=false\nType=Application\nIcon=audio-headphones" > $HOME/.local/share/applications/noson.desktopecho -e "[Desktop Entry]\nName=Sonos Controller\nExec=flatpak run io.github.janbar.noson\nTerminal=false\nType=Application\nIcon=audio-headphones" > $HOME/.local/share/applications/noson.desktop
             flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
             flatpak update
             flatpak install -y --or-update flathub io.github.janbar.noson
