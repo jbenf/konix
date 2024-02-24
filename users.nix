@@ -36,6 +36,7 @@
         { command = "/run/current-system/sw/bin/systemctl start nix-optimise"; options = [ "NOPASSWD" ]; }
         { command = "/run/current-system/sw/bin/systemctl start nixos-upgrade"; options = [ "NOPASSWD" ]; }
         { command = "/run/current-system/sw/bin/systemctl start konix-flake-update"; options = [ "NOPASSWD" ]; }
+        { command = "/run/current-system/sw/bin/flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo"; options = [ "NOPASSWD" ];}
       ]; 
     }
   ];
