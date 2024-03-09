@@ -32,4 +32,12 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  networking.firewall = {
+    enable = true;
+    #allowedTCPPorts = [ 80 443 ];
+    allowedUDPPortRanges = [
+      { from = 1900; to = 1901; }
+    ];
+  };
 }
