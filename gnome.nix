@@ -23,6 +23,7 @@
     gnomeExtensions.dash-to-dock
     gnome.gnome-tweaks
     papirus-icon-theme
+    whitesur-gtk-theme
     soco-cli
   ];
 
@@ -65,6 +66,7 @@ systemd.user.services.konix-gnome-init = {
     script = ''
       gsettings set org.gnome.shell disable-user-extensions false
       gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
+      gsettings set org.gnome.desktop.interface gtk-theme "WhiteSur-Dark"
       gnome-extensions enable dash-to-dock@micxgx.gmail.com
       echo -e "[Desktop Entry]\nName=Sonos Play\nExec=sonos _all_ play_uri https://streaming.shoutcast.com/crooze-mp3\nTerminal=false\nType=Application\nIcon=media-playback-start" > $HOME/.local/share/applications/sonos_play.desktop
       echo -e "[Desktop Entry]\nName=Sonos Pause\nExec=sonos _all_ pause\nTerminal=false\nType=Application\nIcon=media-playback-pause" > $HOME/.local/share/applications/sonos_pause.desktop
