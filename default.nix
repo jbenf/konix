@@ -11,8 +11,7 @@
       ./locale.nix
       ./networking.nix
       ./nixos.nix
-      #./boot.nix
-      ./audio.nix
+      ./boot.nix
       ./input.nix
       ./printing.nix
       ./gnome.nix
