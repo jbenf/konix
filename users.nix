@@ -13,6 +13,7 @@
     description = "Kollektiv";
     extraGroups = [ "networkmanager" "dialout" "tty" ];
     packages = with pkgs; [
+      chromium
       keepassxc
       libreoffice
       evince
