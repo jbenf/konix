@@ -21,7 +21,7 @@
  
   environment.systemPackages = with pkgs; [
     gnomeExtensions.dash-to-dock
-    gnome.gnome-tweaks
+    gnome-tweaks
     papirus-icon-theme
     whitesur-gtk-theme
     soco-cli
@@ -61,7 +61,7 @@ systemd.user.services.konix-gnome-init = {
       Restart   = "no";
     };
 
-    path = with pkgs; [ glib gnome.gnome-shell ];
+    path = with pkgs; [ glib gnome-shell ];
     script = ''
       gsettings set org.gnome.shell disable-user-extensions false
       gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
