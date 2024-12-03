@@ -49,15 +49,6 @@
     #randomizedDelaySec = "45min";
   };
 
-  systemd.timers.konix-flake-update = {
-    wantedBy = [ "timers.target" ];
-    partOf = [ "konix-flake-update.service" ];
-    timerConfig = {
-      OnCalendar = [ "*-*-* *:00:00" ];
-      persistent = true;
-    };
-  };
-
 
   systemd.user.services.konix-reboot-check = {
     serviceConfig.Type = "oneshot";
@@ -70,7 +61,7 @@
         echo "No reboot needed"
       else
         echo "Reboot needed"
-        notify-send -i system -u critical "Update" "Bitte starten Sie den Rechner neu um das Update zu vervollständigen."
+        notify-send -i system -u critical "Update" "Bitte starten Sie den Rechner neu um das Update zu abzuschließen."
       fi
       
     '';
