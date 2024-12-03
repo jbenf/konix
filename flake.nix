@@ -23,6 +23,7 @@
             ./default.nix
             ./kobook1.nix
             ./notebook.nix
+            ./boot.nix
         ];
       };
       kobook2 = nixpkgs.lib.nixosSystem {
@@ -32,6 +33,7 @@
             ./default.nix
             ./kobook2.nix
             ./notebook.nix
+            ./boot.nix
         ];
       };
     };
