@@ -9,7 +9,7 @@
     
   # Bootloader
   boot.loader = {
-    efi.canTouchEfiVariables = true;
+    #efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;
     timeout = 4;
   };
