@@ -37,7 +37,7 @@
 
   system.autoUpgrade = {
     enable = true;
-    flake = "/root/konix";
+    flake = ''"git+https://github.com/jbenf/konix.git?ref=5-update-to-nixos-2411"'';
     flags = [
       "--no-write-lock-file"
       "-L" # print build logs
@@ -48,17 +48,6 @@
     persistent = true;
     #randomizedDelaySec = "45min";
   };
-
-  systemd.services.konix-flake-update = {
-      serviceConfig.Type = "oneshot";
-      path = with pkgs; [ git ];
-      script = ''
-        cd /root/konix
-        git reset --hard
-        git clean -dxf
-        git pull
-      '';
-    };
 
   systemd.timers.konix-flake-update = {
     wantedBy = [ "timers.target" ];
