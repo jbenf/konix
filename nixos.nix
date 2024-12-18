@@ -37,7 +37,7 @@
 
   system.autoUpgrade = {
     enable = true;
-    flake = ''"git+https://github.com/jbenf/konix.git?ref=5-update-to-nixos-2411"'';
+    flake = ''"git+https://github.com/jbenf/konix.git"'';
     flags = [
       "--no-write-lock-file"
       "-L" # print build logs
