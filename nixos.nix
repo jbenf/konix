@@ -37,7 +37,7 @@
 
   system.autoUpgrade = {
     enable = true;
-    flake = "/root/konix";
+    flake = ''"git+https://github.com/jbenf/konix.git"'';
     flags = [
       "--no-write-lock-file"
       "-L" # print build logs
@@ -47,26 +47,6 @@
     dates = "11:05";
     persistent = true;
     #randomizedDelaySec = "45min";
-  };
-
-  systemd.services.konix-flake-update = {
-      serviceConfig.Type = "oneshot";
-      path = with pkgs; [ git ];
-      script = ''
-        cd /root/konix
-        git reset --hard
-        git clean -dxf
-        git pull
-      '';
-    };
-
-  systemd.timers.konix-flake-update = {
-    wantedBy = [ "timers.target" ];
-    partOf = [ "konix-flake-update.service" ];
-    timerConfig = {
-      OnCalendar = [ "*-*-* *:00:00" ];
-      persistent = true;
-    };
   };
 
 
@@ -81,7 +61,7 @@
         echo "No reboot needed"
       else
         echo "Reboot needed"
-        notify-send -i system -u critical "Update" "Bitte starten Sie den Rechner neu um das Update zu vervollständigen."
+        notify-send -i system -u critical "Update" "Bitte starten Sie den Rechner neu um das Update zu abzuschließen."
       fi
       
     '';

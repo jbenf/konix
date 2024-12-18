@@ -23,6 +23,13 @@
     ];
   };
 
+  programs.chromium = {
+    enable = true;
+    extensions = [
+      "chknabpgcjhognofjhnlhlmjgidpjkeg" # Print Button
+    ];
+  };
+
   environment.localBinInPath = true;
 
   # Disable the root user
@@ -41,7 +48,7 @@
   ];
 
   environment.shellAliases = {
-    konix-update = "sudo systemctl start nix-gc && sleep 1 && sudo systemctl start nix-optimise && sleep 1 && sudo systemctl start konix-flake-update && sleep 1 && sudo systemctl start nixos-upgrade && sleep 1 && systemctl --user start konix-gnome-init && systemctl --user start konix-reboot-check && echo Update completed";
+    konix-update = "sudo systemctl start nix-gc && sleep 1 && sudo systemctl start nix-optimise && sleep 1 && sleep 1 && sudo systemctl start nixos-upgrade && sleep 1 && systemctl --user start konix-gnome-init && systemctl --user start konix-reboot-check && echo Update completed";
   };
 
 }
