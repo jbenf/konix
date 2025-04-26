@@ -8,15 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
-      ./locale.nix
-      ./networking.nix
-      ./nixos.nix
-      ./input.nix
-      ./printing.nix
-      ./gnome.nix
-      ./tools.nix
-      ./users.nix
-      ./flatpak.nix
+      ./modules
     ];
 
   
