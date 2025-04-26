@@ -63,6 +63,7 @@
         modules = globalModules ++ [
           {
             networking.hostName = "maria0";
+            systemd.user.services.konix-gnome-init.environment.SONOS_ENABLED = "false";
           }
           ./users/maria
         ];
