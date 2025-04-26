@@ -22,7 +22,7 @@
         programs.command-not-found.enable = false;
         services.printing.enable = true;
         environment.localBinInPath = true;
-        bluetooth.enable = true;
+        hardware.bluetooth.enable = true;
 
         # Disable the root user
         #users.users.root.hashedPassword = "!";
