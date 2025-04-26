@@ -8,6 +8,7 @@
   outputs = inputs@{ self, nixpkgs, ...}:
   let 
     globalModules = [
+      /etc/nixos/hardware-configuration.nix
       ./modules
       ({ config, pkgs, ... }: {
         system.configurationRevision = self.rev or self.dirtyRev or null; 
@@ -33,21 +34,37 @@
         system = "x86_64-linux";
         
         modules = kollektivModules ++ [
+          {
             networking.hostName = "konix0";
+          }
         ];
       };
       kobook1 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         
         modules = kollektivModules ++ [
+          {
             networking.hostName = "kobook1";
+          }
         ];
       };
       kobook2 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         
         modules = kollektivModules ++ [
+          {
             networking.hostName = "kobook2";
+          }
+        ];
+      };
+      maria0 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        
+        modules = globalModules ++ [
+          {
+            networking.hostName = "maria0";
+          }
+          ./users/maria
         ];
       };
     };
