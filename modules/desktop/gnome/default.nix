@@ -77,6 +77,8 @@ systemd.user.services.konix-gnome-init = {
         favorites="$favorites, 'io.github.janbar.noson.desktop', 'sonos_play.desktop', 'sonos_pause.desktop', 'sonos_vol_down.desktop', 'sonos_vol_up.desktop'"
       else
         rm $HOME/.local/share/applications/sonos_*.desktop | true
+        echo -e "[Desktop Entry]\nName=Konix Update\nExec=konix-update\nTerminal=false\nType=Application\nIcon=update-symbolic" > $HOME/.local/share/applications/konix_update.desktop
+        favorites="$favorites, 'brave-browser.desktop', 'org.gnome.Software.desktop', 'Zoom.desktop', 'skypeforlinux.desktop', 'konix_update.desktop'"
       fi
 
       gsettings set org.gnome.shell favorite-apps "[$favorites]"
