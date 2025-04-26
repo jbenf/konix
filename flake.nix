@@ -3,9 +3,13 @@
   
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, ...}:
+  outputs = inputs@{ self, nixpkgs, home-manager, ...}:
   let
     globalModules = [
       /etc/nixos/hardware-configuration.nix
@@ -27,6 +31,15 @@
       ./users/kollektiv
       ./modules/dymo
     ];
+    mariaModules = globalModules ++ [
+      ./users/maria
+      home-manager.nixosModules.home-manager
+      ({ config, pkgs, lib, ... }: {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.maria = import ./users/maria/home;
+      })
+    ]
   in {
     
     nixosConfigurations = {
@@ -57,14 +70,13 @@
           }
         ];
       };
-      maria0 = nixpkgs.lib.nixosSystem {
+      maria = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         
-        modules = globalModules ++ [
+        modules = mariaModules ++ [
           {
-            networking.hostName = "maria0";
+            networking.hostName = "maria";
           }
-          ./users/maria
         ];
       };
     };
