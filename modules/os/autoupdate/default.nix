@@ -16,9 +16,9 @@
 
   nix.gc = {
     persistent = true;
-    dates = "10:45";
+    dates = "Wed *-*-* 10:45";
     automatic = true;
-    options = "--delete-older-than 7d";
+    options = "--delete-older-than 30d";
   };
 
   system.autoUpgrade = {
@@ -30,7 +30,7 @@
       "--impure"
       "--option" "download-attempts" "10"
     ];
-    dates = "11:05";
+    dates = "Wed *-*-* 11:05";
     persistent = true;
     #randomizedDelaySec = "45min";
   };
