@@ -3,7 +3,7 @@
 {
   imports =
     [
-        ./nixos
+        ./autoupdate
         ./boot
         ./locale
         ./networking
