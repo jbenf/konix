@@ -24,7 +24,7 @@
         script = ''
             flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
             flatpak update
-            flatpak install -y --or-update flathub io.github.janbar.noson
+            flatpak uninstall -y io.github.janbar.noson | true
         '';
     };
 
