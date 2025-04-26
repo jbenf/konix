@@ -5,5 +5,12 @@
 { config, pkgs, ... }:
 
 {
-  networking.hostName = "kobook1"; # Define your hostname.
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.maria = {
+    isNormalUser = true;
+    description = "Maria";
+    extraGroups = [ "networkmanager" "dialout" "tty" ];
+    
+  };
 }
+

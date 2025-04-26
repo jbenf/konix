@@ -24,7 +24,6 @@
     gnome-tweaks
     papirus-icon-theme
     whitesur-gtk-theme
-    soco-cli
   ];
 
   services.xserver.excludePackages = [ pkgs.xterm ];
@@ -63,21 +62,24 @@ systemd.user.services.konix-gnome-init = {
 
     path = with pkgs; [ glib gnome-shell ];
     script = ''
+      set -x
       gsettings set org.gnome.shell disable-user-extensions false
       gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
       gsettings set org.gnome.desktop.interface gtk-theme "WhiteSur-Dark"
+      gsettings --schemadir ${pkgs.gnomeExtensions.dash-to-dock}/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas set org.gnome.shell.extensions.dash-to-dock dock-fixed true
+      gsettings --schemadir ${pkgs.gnomeExtensions.dash-to-dock}/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/schemas autohide false
       gnome-extensions enable dash-to-dock@micxgx.gmail.com
-      echo -e "[Desktop Entry]\nName=Sonos Play\nExec=sonos _all_ play_uri https://streaming.shoutcast.com/crooze-mp3\nTerminal=false\nType=Application\nIcon=media-playback-start" > $HOME/.local/share/applications/sonos_play.desktop
-      echo -e "[Desktop Entry]\nName=Sonos Pause\nExec=sonos _all_ pause\nTerminal=false\nType=Application\nIcon=media-playback-pause" > $HOME/.local/share/applications/sonos_pause.desktop
-      echo -e "[Desktop Entry]\nName=Sonos Volume Up\nExec=sonos _all_ relative_volume 5\nTerminal=false\nType=Application\nIcon=audio-volume-high" > $HOME/.local/share/applications/sonos_vol_up.desktop
-      echo -e "[Desktop Entry]\nName=Sonos Volume Down\nExec=sonos _all_ relative_volume -5\nTerminal=false\nType=Application\nIcon=audio-volume-low" > $HOME/.local/share/applications/sonos_vol_down.desktop
-      gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'chromium-browser.desktop', 'org.keepassxc.KeePassXC.desktop', 'startcenter.desktop', 'io.github.janbar.noson.desktop', 'sonos_play.desktop', 'sonos_pause.desktop', 'sonos_vol_down.desktop', 'sonos_vol_up.desktop']"
-    '';
-  };
+      favorites="'org.gnome.Nautilus.desktop', 'chromium-browser.desktop', 'org.keepassxc.KeePassXC.desktop', 'startcenter.desktop'"
+      if [[ $USER == "kollektiv" ]]; then
+        rm $HOME/.local/share/applications/sonos_*.desktop | true
+      else
+        rm $HOME/.local/share/applications/sonos_*.desktop | true
+        favorites="$favorites, 'brave-browser.desktop', 'org.gnome.Software.desktop', 'Zoom.desktop', 'skypeforlinux.desktop'"
+      fi
 
-  environment.shellAliases = {
-    sonos-crooze = "sonos _all_ play_uri https://streaming.shoutcast.com/crooze-mp3";
-    sonos-smartradio = "sonos _all_ play_uri https://stream.sound-team.de/smartradio.mp3";
+      gsettings set org.gnome.shell favorite-apps "[$favorites]"
+      
+    '';
   };
 
 }
