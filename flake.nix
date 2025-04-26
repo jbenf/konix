@@ -39,7 +39,7 @@
         home-manager.useUserPackages = true;
         home-manager.users.maria = import ./users/maria/home;
       })
-    ]
+    ];
   in {
     
     nixosConfigurations = {
