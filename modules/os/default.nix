@@ -5,7 +5,7 @@
     [
         ./nixos
         ./boot
-        ./local
+        ./locale
         ./networking
     ];
 
