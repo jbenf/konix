@@ -63,6 +63,7 @@ systemd.user.services.konix-gnome-init = {
 
     path = with pkgs; [ glib gnome-shell ];
     script = ''
+      set +x
       gsettings set org.gnome.shell disable-user-extensions false
       gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
       gsettings set org.gnome.desktop.interface gtk-theme "WhiteSur-Dark"
