@@ -9,8 +9,6 @@
   let 
     globalModules = [
       ./modules
-      ./users.nix
-      ./printing.nix
       ({ config, pkgs, ... }: {
         system.configurationRevision = self.rev or self.dirtyRev or null; 
         system.stateVersion = "23.11";
@@ -18,7 +16,15 @@
         nixpkgs.config.allowUnfree = true;
         programs.command-not-found.enable = false;
         services.printing.enable = true;
+        environment.localBinInPath = true;
+
+        # Disable the root user
+        #users.users.root.hashedPassword = "!";
       })
+    ];
+    kollektivModules = globalModules ++ [
+      ./users/kollektiv
+      ./modules/dymo
     ];
   in {
     
@@ -26,21 +32,21 @@
       konix0 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         
-        modules = globalModules ++ [
+        modules = kollektivModules ++ [
             networking.hostName = "konix0";
         ];
       };
       kobook1 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         
-        modules = globalModules ++ [
+        modules = kollektivModules ++ [
             networking.hostName = "kobook1";
         ];
       };
       kobook2 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         
-        modules = globalModules ++ [
+        modules = kollektivModules ++ [
             networking.hostName = "kobook2";
         ];
       };

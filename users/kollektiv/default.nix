@@ -30,11 +30,5 @@
     ];
   };
 
-  environment.localBinInPath = true;
-
-  # Disable the root user
-  #users.users.root.hashedPassword = "!";
-
-
 }
 
