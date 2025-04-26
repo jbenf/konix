@@ -6,7 +6,7 @@
   };
 
   outputs = inputs@{ self, nixpkgs, ...}:
-  let 
+  let
     globalModules = [
       /etc/nixos/hardware-configuration.nix
       ./modules
@@ -63,7 +63,6 @@
         modules = globalModules ++ [
           {
             networking.hostName = "maria0";
-            systemd.user.services.konix-gnome-init.environment.SONOS_ENABLED = "false";
           }
           ./users/maria
         ];

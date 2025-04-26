@@ -61,10 +61,6 @@ systemd.user.services.konix-gnome-init = {
       Restart   = "no";
     };
 
-    environment = {
-      SONOS_ENABLED = "true";
-    };
-
     path = with pkgs; [ glib gnome-shell ];
     script = ''
       gsettings set org.gnome.shell disable-user-extensions false
@@ -72,7 +68,7 @@ systemd.user.services.konix-gnome-init = {
       gsettings set org.gnome.desktop.interface gtk-theme "WhiteSur-Dark"
       gnome-extensions enable dash-to-dock@micxgx.gmail.com
       favorites = "'org.gnome.Nautilus.desktop', 'chromium-browser.desktop', 'org.keepassxc.KeePassXC.desktop', 'startcenter.desktop'"
-      if [ $SONOS_ENABLED="true" ]; then
+      if [ $USER="kollektiv" ]; then
         echo "Error: $varname is non-existent or empty"
         echo -e "[Desktop Entry]\nName=Sonos Play\nExec=sonos _all_ play_uri https://streaming.shoutcast.com/crooze-mp3\nTerminal=false\nType=Application\nIcon=media-playback-start" > $HOME/.local/share/applications/sonos_play.desktop
         echo -e "[Desktop Entry]\nName=Sonos Pause\nExec=sonos _all_ pause\nTerminal=false\nType=Application\nIcon=media-playback-pause" > $HOME/.local/share/applications/sonos_pause.desktop
