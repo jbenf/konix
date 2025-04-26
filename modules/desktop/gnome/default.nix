@@ -66,6 +66,8 @@ systemd.user.services.konix-gnome-init = {
       gsettings set org.gnome.shell disable-user-extensions false
       gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
       gsettings set org.gnome.desktop.interface gtk-theme "WhiteSur-Dark"
+      gsettings --schemadir ${pkgs.gnomeExtensions.dash-to-dock}/schemas set org.gnome.shell.extensions.dash-to-dock dock-fixed true
+      gsettings --schemadir ${pkgs.gnomeExtensions.dash-to-dock}/schemas set org.gnome.shell.extensions.dash-to-dock autohide false
       gnome-extensions enable dash-to-dock@micxgx.gmail.com
       favorites="'org.gnome.Nautilus.desktop', 'chromium-browser.desktop', 'org.keepassxc.KeePassXC.desktop', 'startcenter.desktop'"
       if [[ $USER == "kollektiv" ]]; then
