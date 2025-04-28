@@ -29,10 +29,10 @@
   services.xserver.excludePackages = [ pkgs.xterm ];
 
   environment.gnome.excludePackages = (with pkgs; [
-    gnome-photos
+    #gnome-photos
     gnome-tour
     #cheese # webcam tool
-    gnome-music
+    #gnome-music
     #gnome-terminal
     #gedit # text editor
     epiphany # web browser
@@ -44,8 +44,8 @@
     iagno # go game
     hitori # sudoku game
     atomix # puzzle game
-    gnome-calendar
-    gnome-contacts
+    #gnome-calendar
+    #gnome-contacts
 ]);
 
 systemd.user.services.konix-gnome-init = {
@@ -74,7 +74,7 @@ systemd.user.services.konix-gnome-init = {
         rm $HOME/.local/share/applications/sonos_*.desktop | true
       else
         rm $HOME/.local/share/applications/sonos_*.desktop | true
-        favorites="$favorites, 'brave-browser.desktop', 'org.gnome.Software.desktop', 'Zoom.desktop', 'skypeforlinux.desktop'"
+        favorites="$favorites, 'brave-browser.desktop', 'org.gnome.Software.desktop', 'Zoom.desktop', 'skypeforlinux.desktop', 'org.gnome.Geary.desktop'"
       fi
 
       gsettings set org.gnome.shell favorite-apps "[$favorites]"
