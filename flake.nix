@@ -31,9 +31,15 @@
     kollektivModules = globalModules ++ [
       ./users/kollektiv
       ./modules/dymo
+      ({ config, pkgs, ...}: {
+        services.printing.drivers = [ pkgs.gutenprint pkgs.hplip pkgs.cups-dymo ];
+      })
     ];
     mariaModules = globalModules ++ [
       ./users/maria
+      ({ config, pkgs, ...}: {
+        services.printing.drivers = [ pkgs.gutenprint pkgs.hplip pkgs.canon-cups-ufr2 ];
+      })
       home-manager.nixosModules.home-manager
       ({ config, pkgs, lib, ... }: {
         home-manager.useGlobalPkgs = true;
