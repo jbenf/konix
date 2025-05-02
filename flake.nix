@@ -20,7 +20,6 @@
         nix.settings.experimental-features = [ "nix-command" "flakes" ];
         nixpkgs.config.allowUnfree = true;
         programs.command-not-found.enable = false;
-        services.printing.enable = true;
         environment.localBinInPath = true;
         hardware.bluetooth.enable = true;
 

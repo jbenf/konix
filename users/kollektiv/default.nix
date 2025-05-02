@@ -11,7 +11,7 @@
   users.users.kollektiv = {
     isNormalUser = true;
     description = "Kollektiv";
-    extraGroups = [ "networkmanager" "dialout" "tty" ];
+    extraGroups = [ "networkmanager" "dialout" "tty" "lpadmin" ];
     packages = with pkgs; [
       chromium
       keepassxc

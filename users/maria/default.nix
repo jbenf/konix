@@ -9,7 +9,7 @@
   users.users.maria = {
     isNormalUser = true;
     description = "Maria";
-    extraGroups = [ "networkmanager" "dialout" "tty" ];
+    extraGroups = [ "networkmanager" "dialout" "tty" "lpadmin" ];
     
   };
 }
