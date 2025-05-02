@@ -37,6 +37,9 @@
     ];
     mariaModules = globalModules ++ [
       ./users/maria
+      ({ config, pkgs, ...}: {
+        services.printing.drivers = [ pkgs.gutenprint pkgs.foomatic-db-ppds ];
+      })
       home-manager.nixosModules.home-manager
       ({ config, pkgs, lib, ... }: {
         home-manager.useGlobalPkgs = true;
