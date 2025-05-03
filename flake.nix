@@ -37,7 +37,7 @@
     mariaModules = globalModules ++ [
       ./users/maria
       ({ config, pkgs, ...}: {
-        services.printing.drivers = [ pkgs.gutenprint pkgs.foomatic-db-ppds ];
+        services.printing.drivers = [ pkgs.gutenprint pkgs.foomatic-db-ppds pkgs.canon-cups-ufr2 ];
       })
       home-manager.nixosModules.home-manager
       ({ config, pkgs, lib, ... }: {
