@@ -8,6 +8,7 @@
         ./notebook
         ./tools
         ./flatpak
+        ./printing
     ];
 
 }
