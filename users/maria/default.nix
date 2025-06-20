@@ -12,5 +12,7 @@
     extraGroups = [ "networkmanager" "dialout" "tty" "lpadmin" ];
     
   };
+
+  service.avahi.enable = false;
 }
 
