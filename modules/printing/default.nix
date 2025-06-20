@@ -4,7 +4,7 @@
   services.ipp-usb.enable = true;
   services.printing = {
     enable = true;
-    browsed = false;
+    browsed.enable = false;
     browsing = false;
     extraFilesConf = ''
       SystemGroup root wheel lpadmin users
