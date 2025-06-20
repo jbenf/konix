@@ -15,7 +15,6 @@ in {
     file
     keepassxc
     libreoffice
-    skypeforlinux
     zoom-us
   ];
 

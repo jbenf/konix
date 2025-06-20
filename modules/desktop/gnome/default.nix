@@ -74,7 +74,7 @@ systemd.user.services.konix-gnome-init = {
         rm $HOME/.local/share/applications/sonos_*.desktop | true
       else
         rm $HOME/.local/share/applications/sonos_*.desktop | true
-        favorites="$favorites, 'brave-browser.desktop', 'org.gnome.Software.desktop', 'Zoom.desktop', 'skypeforlinux.desktop', 'org.gnome.Geary.desktop'"
+        favorites="$favorites, 'brave-browser.desktop', 'org.gnome.Software.desktop', 'Zoom.desktop', 'org.gnome.Geary.desktop'"
       fi
 
       gsettings set org.gnome.shell favorite-apps "[$favorites]"
