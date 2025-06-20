@@ -13,6 +13,6 @@
     
   };
 
-  service.avahi.enable = false;
+  services.avahi.enable = false;
 }
 
