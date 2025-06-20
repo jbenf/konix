@@ -5,7 +5,7 @@
   services.printing = {
     enable = true;
     extraFilesConf = ''
-      SystemGroup root wheel lpadmin
+      SystemGroup root wheel lpadmin users
     '';
   };
 
