@@ -69,12 +69,14 @@
         { command = "/run/current-system/sw/bin/systemctl start nix-optimise"; options = [ "NOPASSWD" ]; }
         { command = "/run/current-system/sw/bin/systemctl start nixos-upgrade"; options = [ "NOPASSWD" ]; }
         { command = "/run/current-system/sw/bin/systemctl start konix-flake-update"; options = [ "NOPASSWD" ]; }
+        { command = "/run/current-system/sw/bin/journalctl -u nixos-upgrade -f"; options = [ "NOPASSWD" ]; }
       ]; 
     }
   ];
 
   environment.shellAliases = {
     konix-update = "sudo systemctl start nix-gc && sleep 1 && sudo systemctl start nix-optimise && sleep 1 && sleep 1 && sudo systemctl start nixos-upgrade && sleep 1 && systemctl --user start konix-gnome-init && systemctl --user start konix-reboot-check && echo Update completed";
+    konix-update-log = "sudo journalctl -u nixos-upgrade -f";
   };
 
 }
