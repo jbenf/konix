@@ -29,7 +29,6 @@
     ];
     kollektivModules = globalModules ++ [
       ./users/kollektiv
-      ./modules/dymo
       ({ config, pkgs, ...}: {
         services.printing.drivers = [ pkgs.gutenprint pkgs.hplip pkgs.cups-dymo ];
       })
